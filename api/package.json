@@ -1,0 +1,19 @@
+{
+  "name": "phone-catalog-api",
+  "version": "1.0.0",
+  "description": "Catalog app api server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "restify": "^7.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
+}

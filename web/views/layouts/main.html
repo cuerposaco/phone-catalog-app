@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <meta name=”description” content="{{description}}">
+    {% block styles %}
+      <link rel="stylesheet" href="{{distURL}}/styles.css">
+    {% endblock %}
+  </head>
+  <body>
+    <div id="container">
+      {% block content %}{% endblock %}    
+    </div>
+    {% block scripts %}
+      <script>
+        window.API_URL = '{{ API_URL }}';
+      </script>
+      <script src="{{distURL}}/main.bundle.js"></script>
+    {% endblock %}
+  </body>
+</html>
