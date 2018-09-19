@@ -16,7 +16,6 @@ export default function appReducer(state = initialState(), action) {
       return {
         ...state,
         items: action.items,
-        loading: false,
       };
 
     case 'SELECT_PHONE':
