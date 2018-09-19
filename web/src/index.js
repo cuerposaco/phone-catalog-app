@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Main from './components/Main';
 
+import './styles/styles.scss';
+
 function Application() {
   return (
     <Provider store={store}>

@@ -22,10 +22,11 @@ const downloadImage = (fileUrl, location) => {
   return filename;
 };
 
-request('http://localhost:4001/phones', (err, response, body) => {
+request('http://localhost:4001/_phones', (err, response, body) => {
   if (err) { console.log(err); return process.exit(1); }
 
   const data = JSON.parse(body);
+  const getUID = () => Number(Math.random().toString().split('.')[1]).toString(16);
 
   const phonePromises = data.map(
     phone => promiseRequest(phone.description).then((resp) => {
@@ -35,6 +36,7 @@ request('http://localhost:4001/phones', (err, response, body) => {
       downloadImage(imageHigh, path.resolve(__dirname, 'static', 'img'));
       return ({
         ...phone,
+        id: getUID(),
         description: $('.modulo-introduccion #acordion_introduccion > div').text().replace(/(\n|\t)/g, ''),
         image: {
           low: `/img/${getFileNameFromPath(phone.image)}`,

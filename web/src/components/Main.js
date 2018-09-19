@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import HeaderComponent from './HeaderComponent';
+import SpinnerComponent from './SpinnerComponent';
 import PhoneListContainer from './PhoneListContainer';
 import PhoneDetailComponent from './PhoneDetailComponent';
 
-function Main({ loading, selectedItem }) {
+import { resetSelectPhone as resetSelectPhoneAction } from '../store/actions/phones';
+
+function Main({ loading, selectedItem, resetSelectPhone }) {
   return (
     <div>
-      <h1>Phone Catalog React</h1>
-      { loading && <p>Loading....</p>}
+      <HeaderComponent />
+      { loading && <SpinnerComponent /> }
       <PhoneListContainer />
-      { selectedItem && <PhoneDetailComponent phone={selectedItem} />}
+      { selectedItem
+        && <PhoneDetailComponent phone={selectedItem} onCloseHandler={resetSelectPhone} />}
     </div>
   );
 }
@@ -18,6 +25,7 @@ function Main({ loading, selectedItem }) {
 Main.propTypes = {
   loading: PropTypes.bool,
   selectedItem: PropTypes.object,
+  resetSelectPhone: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -25,6 +33,11 @@ const mapStateToProps = state => ({
   selectedItem: state.app.selectedItem,
 });
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+  resetSelectPhone: resetSelectPhoneAction,
+}, dispatch);
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Main);

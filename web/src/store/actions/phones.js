@@ -8,6 +8,7 @@ export const getPhones = () => (dispatch) => {
 };
 
 export const selectPhone = phone => (dispatch) => {
-  // dispatch({ type: 'LOADING', loading: true });
   dispatch({ type: 'SELECT_PHONE', selectedPhone: phone });
 };
+
+export const resetSelectPhone = () => ({ type: 'RESET_SELECT_PHONE' });

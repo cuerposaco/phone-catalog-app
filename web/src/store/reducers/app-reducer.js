@@ -9,7 +9,7 @@ export default function appReducer(state = initialState(), action) {
     case 'LOADING':
       return {
         ...state,
-        loading: true,
+        loading: action.loading,
       };
 
     case 'GET_PHONES':

@@ -1,5 +1,6 @@
 const restify = require('restify');
 const phoneCatalog = require('./data');
+const _phoneCatalog = require('./data/_index');
 
 const server = restify.createServer();
 
@@ -19,7 +20,13 @@ server.get('/', (req, res, next) => {
 });
 
 server.get('/phones', (req, res, next) => {
-  res.send(phoneCatalog);
+  setTimeout(() => res.send(phoneCatalog), 2000);
+  return next();
+});
+
+// endpoint to Data mining
+server.get('/_phones', (req, res, next) => {
+  res.send(_phoneCatalog);
   return next();
 });
 

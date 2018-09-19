@@ -1,35 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class PhoneList extends Component {
-  componentDidMount() {}
+import PhoneItem from './PhoneItem';
 
-  render() {
-    const { items, onItemClickHandler } = this.props;
-    return (
-      <div className="phone-list-container">
-        {
-          (!items || !items.length)
-            ? (<p>No Phones</p>)
-            : (
-              <ul className="phone-list-container_list">
-                {items.map((item, index) => (
-                  <li key={(Date.now() + index).toString(16)} onClick={onItemClickHandler.bind(this, item)}>
-                    <img
-                      src={item.image.low}
-                      title={item.title}
-                      alt={item.title}
-                    />
-                    {item.title}
-                  </li>
-                ))}
-              </ul>
-            )
-        }
-      </div>
-    );
-  }
-}
+const PhoneList = ({ items, onItemClickHandler }) => (
+  <div className="phone-list-container">
+    {
+      (!items || !items.length)
+        ? (<p>No Phones</p>)
+        : (
+          <ul className="phone-list-container_list">
+            {items.map((item, index) => (
+              <li key={(Date.now() + index).toString(16)}>
+                <PhoneItem type="card" phone={item} onClickHanlder={() => onItemClickHandler(item)} />
+              </li>
+            ))}
+          </ul>
+        )
+    }
+  </div>
+);
 
 PhoneList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
@@ -38,6 +28,7 @@ PhoneList.propTypes = {
 
 PhoneList.defaultProps = {
   items: [],
+  onItemClickHandler: () => {},
 };
 
 export default PhoneList;

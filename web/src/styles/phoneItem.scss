@@ -1,0 +1,149 @@
+.phone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
+  height: 100%;
+  justify-content: space-between;
+  .phone-item__photo {}
+  .phone-item__detail {
+    text-align: center;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .phone-item__detail__title {
+      margin-top: 1em;
+      height: 2em;
+      display: flex;
+      justify-content: center;
+    }
+    .phone-item__detail__price {
+      margin-top: 0.5em;
+      font-weight: 700;
+      font-size: 1.5em;
+    }
+    .phone-item__detail__callToAction {
+      margin-top: 1em;
+      button {
+        -webkit-appearance: none;
+        border: none;
+        background-color: black;
+        color: white;
+        font-weight: 300;
+        padding: 1em;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        cursor: pointer;
+        transition: background-color 150ms;
+        &:hover {
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+
+  // detail status
+  &.detail {
+    background-color: white;
+    height: auto;
+    flex-direction: column;
+    min-height: 100%;
+    align-content: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 1em 0;
+
+    .phone-item__photo {
+      max-width: 160px;
+      width: 40%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .phone-item__detail__extended {
+      .phone-item__detail__colours {}
+      .phone-item__detail__description {}
+    }
+    
+    @media (min-width: 768px) {
+      // max-width: 600px;
+      flex-direction: row;
+      padding: 1em;
+      .phone-item__photo {
+        width: auto;
+        max-width: initial;
+        align-self: flex-start;
+      }
+    }
+    @media (min-width: 1024px) {
+      // max-width: 768px;
+    }
+
+    .phone-item__detail { 
+      text-align: center;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 0.9;
+
+      > * {
+        display: flex;
+        flex-direction:column;
+        order: 2;
+      }
+
+      .phone-item__detail__title,
+      .phone-item__detail__price,
+      .phone-item__detail__callToAction {
+        order: 1;
+        @media (min-width: 768px) {
+          order: 2;
+        }
+      }
+
+      .phone-item__detail__callToAction {
+        width: 50%;
+        margin: 0 auto;
+        @media (min-width: 768px) {
+          width: 100%;
+        }
+      }
+    }
+
+    .phone-item__detail__description {
+      line-height: 1.4em;
+      font-size: 0.9em;
+      padding: 1em;
+      text-align: justify;
+    }
+
+    .phone-item__detail__title {
+      font-size: 2em;
+      background-color: #f2f2f2;
+      @media (min-width: 768px) {
+        margin-top: 0;
+      }
+    }
+
+    .phone-item__detail__price {
+      margin-top: 0.3em;
+      font-weight: 700;
+      font-size: 2.5em;
+    }
+
+    .phone-item__detail__colours {
+      padding: 0.7em;
+      span {
+        padding: 0.5em;
+        background-color: #f2f2f2;
+        display: inline-block;
+        margin: 0.5em;
+        font-size: 0.8em;
+      }
+    }
+  }
+}

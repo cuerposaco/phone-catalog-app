@@ -4,22 +4,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import PhoneList from './PhoneList';
-import { getPhones, selectPhone } from '../store/actions/phones';
+import { getPhones as getPhonesAction, selectPhone as selectPhoneAction } from '../store/actions/phones';
 
 class PhoneListContainer extends Component {
+  constructor() {
+    super();
+    this.onItemClickHandlerBind = this.onItemClickHandler.bind(this);
+  }
+
   componentDidMount() {
-    this.props.getPhones();
+    const { getPhones } = this.props;
+    getPhones();
   }
 
   onItemClickHandler(item) {
-    console.log('onItemClickHandler', item);
-    this.props.selectPhone(item);
+    const { selectPhone } = this.props;
+    selectPhone(item);
   }
 
   render() {
     const { items } = this.props;
     return (
-      <PhoneList items={items} onItemClickHandler={this.onItemClickHandler.bind(this)} />
+      <PhoneList items={items} onItemClickHandler={this.onItemClickHandlerBind} />
     );
   }
 }
@@ -27,10 +33,13 @@ class PhoneListContainer extends Component {
 PhoneListContainer.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
   getPhones: PropTypes.func,
-  selectPhone: PropTypes.func
+  selectPhone: PropTypes.func,
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getPhones, selectPhone }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getPhones: getPhonesAction,
+  selectPhone: selectPhoneAction,
+}, dispatch);
 const mapStateToProps = state => ({
   items: state.app.items,
 });

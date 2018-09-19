@@ -1,0 +1,124 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+
+*, ul, li {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@import 'variables';
+@import 'spinner';
+@import 'phoneItem';
+
+nav.mainNav {
+  display: block;
+  background-color: $main-color;
+  padding: 1em;
+  text-align: center;
+  color: white;
+  margin-bottom: 1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  h1 {
+   margin: 0;
+  }
+}
+
+.phone-list-container {
+  padding-top: 6em;
+}
+
+.phone-list-container_list {
+  display: flex;
+  flex-wrap: wrap;
+  
+  li {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 25%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #9e9e9e40;
+    background-color: transparent;
+    padding: 1em;
+    transition: background-color 300ms;
+    
+    &:hover {
+      background-color: #9e9e9e40;
+      cursor: pointer;
+    }
+    
+    img {
+      width: 100px;
+      height: auto;
+      display: flex;
+    }
+  }
+}
+
+.phone-detail-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  padding: 0em;
+  z-index: 0;
+  overflow-y: auto;
+
+  // media
+  @media (min-width: 768px) {
+    padding: 1em;
+  }
+
+  .phone-detail-container__lightbox {
+    background-color: rgba(0,0,0,0.8);
+    transition: background-color 100ms;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    z-index: -1;
+    cursor:pointer;
+    transform: translateZ(0);
+  }
+
+  .phone-detail-container__content {
+    background-color: white;
+
+    @media (min-width: 768px) {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 2em;
+    }
+    @media (min-width: 1024px) {
+      max-width: 768px;
+    }
+
+    .phone-detail-container__closeBtn {
+      position: relative;
+      -webkit-appearance: none;
+      padding: 1em;
+      border: none;
+      display: block;
+      margin: 0 0 0 auto;
+      text-transform: uppercase;
+      &:hover {
+        cursor: pointer;
+        color: #c3c3c3;
+      }
+    }
+  }
+
+  > * {
+    z-index: 1;  
+  }
+}
