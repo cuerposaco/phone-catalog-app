@@ -4,8 +4,6 @@ services:
     command: npm run start:dev # development
     volumes: # development
       - ./api/index.js:/usr/src/app/index.js
-      - ./api/utils:/usr/src/app/utils
-      - ./api/properties:/usr/src/app/properties
   web:
     command: npm run start:devserver # development
     ports:
@@ -15,7 +13,6 @@ services:
       - ./web/index.js:/usr/src/app/index.js
       - ./web/views:/usr/src/app/views
       - ./web/src:/usr/src/app/src
-      - ./web/data:/usr/src/app/data
       - ./web/static:/usr/src/app/static
     environment:
       - DIST_URL=http://localhost:8080/dist
