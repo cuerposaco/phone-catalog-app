@@ -22,7 +22,7 @@ const PhoneItem = ({ phone, onClickHanlder, type }) => (
         : (
           <div className="phone-item__detail__extended">
             <div className="phone-item__detail__colours">
-              {phone.color.map(color => <span>{color}</span>)}
+              {phone.color.map(color => <span key={`${color.toLowerCase().split(' ').join('_')}`}>{color}</span>)}
             </div>
             <div className="phone-item__detail__description">
               {phone.description}
