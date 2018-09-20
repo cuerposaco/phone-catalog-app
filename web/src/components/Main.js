@@ -12,7 +12,7 @@ import { resetSelectPhone as resetSelectPhoneAction } from '../store/actions/pho
 
 function Main({ loading, selectedItem, resetSelectPhone }) {
   return (
-    <div>
+    <div className={`main-app ${selectedItem ? 'overlay' : ''}`}>
       <HeaderComponent />
       { loading && <SpinnerComponent /> }
       <PhoneListContainer />

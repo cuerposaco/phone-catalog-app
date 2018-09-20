@@ -13,6 +13,14 @@
 @import 'spinner';
 @import 'phoneItem';
 
+.main-app {
+  &.overlay {
+    .phone-list-container {
+      overflow: hidden;
+    }
+  }
+}
+
 nav.mainNav {
   display: block;
   background-color: $main-color;
